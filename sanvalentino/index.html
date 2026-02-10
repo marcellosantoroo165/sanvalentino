@@ -99,25 +99,29 @@
     <button id="startBtn">✨ Inizia ✨</button>
   </div>
 
-  <!-- MAIN -->
+  <!-- MAIN SCREEN -->
   <div class="screen" id="mainScreen" style="display:none;">
-    <h1 id="question">AMORE MIO… mi ami? 💖</h1>
+    <h1 id="question">AMORE MIO... mi ami? 💖</h1>
     <button id="yes">SÌ 💘</button>
     <button id="no">NO 💔</button>
   </div>
 
+  <!-- CUORI -->
   <div class="hearts" id="hearts"></div>
 
+  <!-- FOOTER -->
   <footer>
-    Creato con il ❤️ da Marcello
+    Creato con ❤️ da Marcello
   </footer>
 
-  <audio id="music" loop>
+  <!-- TAG AUDIO -->
+  <audio id="music" preload="auto" loop>
     <source src="canzone.mp3" type="audio/mpeg">
   </audio>
 
+  <!-- JAVASCRIPT -->
   <script>
-    console.log("%Creato da Marcello 💘", "color:pink;font-size:16px");
+    console.log("%cSito originale creato da Marcello 💘", "color:pink;font-size:16px");
 
     const startBtn = document.getElementById("startBtn");
     const startScreen = document.getElementById("startScreen");
@@ -139,34 +143,37 @@
       "Sicura al 100%? 💖"
     ];
 
-   startBtn.onclick = () => {
-  music.play().catch(()=>{});
-  startScreen.style.display = "none";
-  mainScreen.style.display = "block";
-};
+    // 🔊 START SCREEN CLICK
+    startBtn.addEventListener("click", function () {
+      music.currentTime = 0;
+      music.play(); // la musica parte qui, gesto valido
+      startScreen.style.display = "none";
+      mainScreen.style.display = "block";
+    });
 
-
-    no.onclick = () => {
+    // NO BUTTON
+    no.addEventListener("click", () => {
       noScale -= 0.12;
       yesScale += 0.12;
       no.style.transform = `scale(${Math.max(noScale, 0.25)})`;
       yes.style.transform = `scale(${yesScale})`;
-    };
+    });
 
-    yes.onclick = () => {
+    // YES BUTTON
+    yes.addEventListener("click", () => {
       if (step < steps.length) {
         question.textContent = steps[step];
         step++;
       } else {
-        music.play().catch(()=>{});
         showLove();
       }
-    };
+    });
 
     function showLove() {
       mainScreen.innerHTML = `
-        <h1>TI AMO ❤️<br>PER SEMPRE 💘<br>SEI LA MIA VITA</h1>
+        <h1>TI AMO ❤️<br>PER SEMPRE 💘</h1>
       `;
+
       for (let i = 0; i < 120; i++) {
         setTimeout(createHeart, i * 60);
       }
@@ -181,7 +188,7 @@
       hearts.appendChild(h);
       setTimeout(()=>h.remove(), 6000);
     }
-  </script>
 
+  </script>
 </body>
 </html>
