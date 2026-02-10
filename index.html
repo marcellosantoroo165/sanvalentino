@@ -138,12 +138,17 @@
       "Sicura sicura? 💞",
       "Sicura al 100%? 💖"
     ];
-    
-startBtn.onclick = () => {
-  music.play().catch(()=>{});
+startBtn.addEventListener("click", function () {
+  // 🔊 musica parte subito con il click
+  music.play().catch(err => {
+    console.log("Audio bloccato dal browser:", err);
+  });
+
+  // cambio schermata
   startScreen.style.display = "none";
   mainScreen.style.display = "block";
-};
+});
+
 
     no.onclick = () => {
       noScale -= 0.12;
@@ -184,4 +189,5 @@ startBtn.onclick = () => {
 
 </body>
 </html>
+
 
