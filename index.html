@@ -138,11 +138,12 @@
       "Sicura sicura? 💞",
       "Sicura al 100%? 💖"
     ];
-
-    startBtn.onclick = () => {
-      startScreen.style.display = "none";
-      mainScreen.style.display = "block";
-    };
+    
+startBtn.onclick = () => {
+  music.play().catch(()=>{});
+  startScreen.style.display = "none";
+  mainScreen.style.display = "block";
+};
 
     no.onclick = () => {
       noScale -= 0.12;
@@ -183,3 +184,4 @@
 
 </body>
 </html>
+
