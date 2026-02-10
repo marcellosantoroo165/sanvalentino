@@ -139,10 +139,12 @@
       "Sicura al 100%? 💖"
     ];
 
-    startBtn.onclick = () => {
-      startScreen.style.display = "none";
-      mainScreen.style.display = "block";
-    };
+   startBtn.onclick = () => {
+  music.play().catch(()=>{});
+  startScreen.style.display = "none";
+  mainScreen.style.display = "block";
+};
+
 
     no.onclick = () => {
       noScale -= 0.12;
@@ -163,7 +165,7 @@
 
     function showLove() {
       mainScreen.innerHTML = `
-        <h1>TI AMO ❤️<br>PER SEMPRE 💘<br> SEI LA MIA VITA</h1>
+        <h1>TI AMO ❤️<br>PER SEMPRE 💘<br>SEI LA MIA VITA</h1>
       `;
       for (let i = 0; i < 120; i++) {
         setTimeout(createHeart, i * 60);
